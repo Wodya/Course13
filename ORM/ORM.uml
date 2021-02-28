@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>PHP</ID>
+  <OriginalElement>D:/Git/Course13/ORM</OriginalElement>
+  <nodes>
+    <node x="313.0" y="0.0">\DbConnection</node>
+    <node x="298.0" y="417.0">\OrderRecord</node>
+    <node x="454.0" y="538.0">D:/Git/Course13/ORM/MySql</node>
+    <node x="0.0" y="291.0">\DbAbstractFactory</node>
+    <node x="0.0" y="538.0">\DbEntities</node>
+    <node x="0.0" y="417.0">\DbMySqlFactory</node>
+    <node x="0.0" y="0.0">\DbQueryBuilder</node>
+    <node x="321.0" y="538.0">D:/Git/Course13/ORM/Factory</node>
+    <node x="332.0" y="149.0">\DbMySqlConnection</node>
+    <node x="0.0" y="148.0">\DbMySqlQueryBuilder</node>
+    <node x="303.0" y="291.0">\DbRecord</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="\OrderRecord" target="\DbRecord">
+      <point x="0.0" y="-38.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="\DbMySqlFactory" target="\DbAbstractFactory">
+      <point x="0.0" y="-38.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="\DbMySqlConnection" target="\DbConnection">
+      <point x="0.0" y="-38.0" />
+      <point x="0.0" y="49.5" />
+    </edge>
+    <edge source="\DbMySqlQueryBuilder" target="\DbQueryBuilder">
+      <point x="0.0" y="-49.0" />
+      <point x="0.0" y="49.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="273.0" y="352.0" />
+  <SelectedNodes>
+    <node>\DbConnection</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
