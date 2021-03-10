@@ -1,0 +1,36 @@
+1. Шаблон FrontController
+    Класс app\Kernel. Метод process получает из $request контроллер и вызывает у него методы с параметрами
+
+   class Kernel
+   {
+      protected function process(Request $request): Response
+      {
+        $matcher = new UrlMatcher($this->routeCollection, new RequestContext());
+        $matcher->getContext()->fromRequest($request);
+
+        try {
+            $request->attributes->add($matcher->match($request->getPathInfo()));
+            $request->setSession(new Session());
+
+            $controller = (new ControllerResolver())->getController($request);
+            $arguments = (new ArgumentResolver())->getArguments($request, $controller);
+
+            return call_user_func_array($controller, $arguments);
+        } catch (ResourceNotFoundException $e) {
+            return new Response('Page not found. 404', Response::HTTP_NOT_FOUND);
+        } catch (\Throwable $e) {
+            $error = 'Server error occurred. 500';
+            if (Registry::getDataConfig('environment') === 'dev') {
+                $error .= '<pre>' . $e->getTraceAsString() . '</pre>';
+            }
+
+            return new Response($error, Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+      }
+   }
+2. Шаблон Registry
+    Класс app\framework\Registry
+    Используется для получения роута из коллекции роутов. Получить роут можно только из заведённых ранее заведённых роутов.
+
+3. Шаблон Identity Map
+    Переделал класс User.php
